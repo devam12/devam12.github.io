@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time for Jhanvii</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        body {
+            /* background-image: url("https://images.unsplash.com/photo-1559163387-e46e8dcb27f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MTR8NDM3MDcyN3x8ZW58MHx8fHw%3D&w=1000&q=80"); */
+            background-image: url("image.jfif");
+            background-size: cover;
+            background-attachment: fixed;
+            height: auto;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="color:white; margin-top: 47PX;margin-left: 40px;">
+        <h5 id="India"></h5>
+        <h5 id="USA"></h5>
+        <h5 style="margin-top: 30px;" id="differance"></h5>
+    </div>
+</body>
+<script>
+
+    let IndiaTime;
+    let USATime;
+    let date1;
+    let date2;
+
+    setInterval(() => {
+        IndiaTime = "INDIA&nbsp&nbsp:&nbsp&nbsp" + new Date().toLocaleString();
+        USATime = "USA&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp" + new Date().toLocaleString('en-US', { timeZone: "America/New_York" });
+
+        date1 = new Date();
+        date2 = new Date("2023/01/23 01:00:01");
+
+        document.getElementById("India").innerHTML = IndiaTime;
+        document.getElementById("USA").innerHTML = USATime;
+
+        showDiff(date1, date2)
+
+    }, 1000);
+
+    function showDiff(date1, date2) {
+
+        var diff = (date2 - date1) / 1000;
+        diff = Math.abs(Math.floor(diff));
+
+        var days = Math.floor(diff / (24 * 60 * 60));
+        var leftSec = diff - days * 24 * 60 * 60;
+
+        var hrs = Math.floor(leftSec / (60 * 60));
+        var leftSec = leftSec - hrs * 60 * 60;
+
+        var min = Math.floor(leftSec / (60));
+        var leftSec = leftSec - min * 60;
+
+        document.getElementById("differance").innerHTML = `${days} Days & <br>${hrs} : ${min}  :  ${leftSec} `;
+    }
+</script>
+
+</html>
