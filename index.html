@@ -33,7 +33,7 @@
     let date2;
 
     setInterval(() => {
-        IndiaTime = "INDIA&nbsp&nbsp:&nbsp&nbsp" + new Date().toLocaleString();
+        IndiaTime = "INDIA&nbsp&nbsp:&nbsp&nbsp" + new Date().toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
         USATime = "USA&nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp" + new Date().toLocaleString('en-US', { timeZone: "America/New_York" });
 
         date1 = new Date();
